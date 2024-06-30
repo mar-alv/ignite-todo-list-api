@@ -27,4 +27,6 @@ const server = http.createServer(async (req, res) => {
 	return route.handler(req, res)
 })
 
-server.listen(3001)
+server.listen(3001, () => {
+	console.log('🔥 server running on port 3001')
+})
