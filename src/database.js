@@ -30,6 +30,17 @@ export class Database {
 		})
 	}
 
+	selectById(table, id) {
+		const rowIndex = this.#database[table].findIndex(i =>
+			i.id === id
+		)
+
+		if (rowIndex === -1)
+			throw new Error('Task not found')
+
+		return this.#database[table][rowIndex]
+	}
+
 	insert(table, data) {
 		if (Array.isArray(this.#database[table]))
 			this.#database[table].push(data)
@@ -63,8 +74,6 @@ export class Database {
 		const rowIndex = this.#database[table].findIndex(i =>
 			i.id === id
 		)
-
-		console.log(rowIndex);
 
 		if (rowIndex === -1)
 			throw new Error('Task not found')

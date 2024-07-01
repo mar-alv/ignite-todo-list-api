@@ -13,9 +13,8 @@ const server = http.createServer(async (req, res) => {
 		i.method === method && i.path.test(url)
 	)
 
-	if (!route) {
-		return res.writeHead(404).end('route not found')
-	}
+	if (!route)
+		return res.writeHead(404).end('Route not found')
 
 	const routeParams = url.match(route.path)
 

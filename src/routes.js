@@ -70,10 +70,28 @@ export const routes = [
 			try {
 				database.delete('tasks', id)
 
-				console.log('teste');
 				return res.writeHead(204).end()
 			} catch (e) {
-				console.log(e);
+				return res.writeHead(404).end(e.message)
+			}
+		}
+	},
+	{
+		method: 'PATCH',
+		path: buildRoutePath('/tasks/:id/complete'),
+		handler: (req, res) => {
+			const { id } = req.params
+
+			try {
+				const task = database.selectById('tasks', id)
+				const isTaskDone = !!task.completedAt
+
+				database.update('tasks', id, {
+					completedAt: isTaskDone ? null : new Date().toISOString()
+				})
+
+				return res.writeHead(204).end()
+			} catch (e) {
 				return res.writeHead(404).end(e.message)
 			}
 		}

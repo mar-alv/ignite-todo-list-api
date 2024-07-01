@@ -181,6 +181,46 @@ Content-type: application/json
 "Task not found"
 ```
 
+##### Close/Reopen a task
+Closes or reopens an existing task through its id
+```sh
+curl -X PATCH http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538/complete -h "Content-Type: application/json"
+```
+
+With 🥧 HTTPie
+```sh
+http PATCH http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538/complete
+```
+
+Responses
+```
+# When successfully closing/reopening a task
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# When not finding the task by its id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
+```
+
+##### Non existing route
+When trying to access a route that doesn't exists in the server
+
+Response
+```
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Route not found"
+```
+
 #### <a id='en-structure' style='text-decoration: none; color: inherit;'>📂 Structure</a>
 ```
 │ httpie/
@@ -362,6 +402,46 @@ Connection: keep-alive
 Content-type: application/json
 
 "Task not found"
+```
+
+##### Fechar/Reabrir uma tarefa
+Fecha ou reabre uma tarefa já existente atraǘes do seu id
+```sh
+curl -X PATCH http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538/complete -h "Content-Type: application/json"
+```
+
+Com 🥧 HTTPie
+```sh
+http PATCH http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538/complete
+```
+
+Respostas
+```
+# Ao fechar/reabrir uma tarefa com sucesso
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# Ao não encontrar a tarefa pelo seu id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
+```
+
+##### Rota não existente
+Ao tentar acessar uma rota que não existe no servidor
+
+Resposta
+```
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Route not found"
 ```
 
 #### <a id='pt-br-estrutura' style='text-decoration: none; color: inherit;'>📂 Estrutura</a>
