@@ -47,9 +47,8 @@ export class Database {
 		)
 
 		if (rowIndex === -1)
-			return
+			throw new Error('Task not found')
 
-		// TODO: Update the updatedAt
 		this.#database[table][rowIndex] = {
 			id,
 			updatedAt: new Date().toISOString(),

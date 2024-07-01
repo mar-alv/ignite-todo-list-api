@@ -52,12 +52,13 @@ export const routes = [
 			if (!req.body)
 				return res.writeHead(400).end('Title or description obligatory')
 
-			const task = database.update('tasks', id, req.body)
-
-			if (!task)
-				return res.writeHead(404).end('Task not found')
+			try {
+				database.update('tasks', id, req.body)
 
 			return res.writeHead(204).end()
+			} catch (e) {	
+				return res.writeHead(404).end(e)
+			}
 		}
 	}
 ]
