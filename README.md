@@ -153,6 +153,34 @@ Content-type: application/json
 "Task not found"
 ```
 
+##### Delete a task
+Deletes an existing task through its id
+```sh
+curl -X DELETE http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 -h "Content-Type: application/json"
+```
+
+With 🥧 HTTPie
+```sh
+http DELETE http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538
+```
+
+Responses
+```
+# When successfully deleting a task
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# When not finding the task by its id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
+```
+
 #### <a id='en-structure' style='text-decoration: none; color: inherit;'>📂 Structure</a>
 ```
 │ httpie/
@@ -300,6 +328,34 @@ Content-type: application/json
 "Title or description obligatory"
 
 # Ao não encontrar a tarefa pelo seu id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
+```
+
+##### Deletar uma tarefa
+Deleta uma tarefa existente através do seu id
+```sh
+curl -X DELETE http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 -h "Content-Type: application/json"
+```
+
+Com 🥧 HTTPie
+```sh
+http DELETE http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538
+```
+
+Respostas
+```
+# Ao deletar com sucesso uma tarefa
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# Ao não encontrar a tarefa através do seu id
 
 HTTP/1.1 404 Not Found
 Connection: keep-alive

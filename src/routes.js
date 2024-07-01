@@ -55,9 +55,26 @@ export const routes = [
 			try {
 				database.update('tasks', id, req.body)
 
-			return res.writeHead(204).end()
+				return res.writeHead(204).end()
 			} catch (e) {	
-				return res.writeHead(404).end(e)
+				return res.writeHead(404).end(e.message)
+			}
+		}
+	},
+	{
+		method: 'DELETE',
+		path: buildRoutePath('/tasks/:id'),
+		handler: (req, res) => {
+			const { id } = req.params
+
+			try {
+				database.delete('tasks', id)
+
+				console.log('teste');
+				return res.writeHead(204).end()
+			} catch (e) {
+				console.log(e);
+				return res.writeHead(404).end(e.message)
 			}
 		}
 	}
