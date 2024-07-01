@@ -27,7 +27,7 @@ export const routes = [
 			const { title, description } = req.body
 
 			if (!title || !description)
-				return res.writeHead(400).end('title and description are obligatory')
+				return res.writeHead(400).end('Title and description are obligatory')
 
 			var creationDate = new Date().toISOString()
 
@@ -40,7 +40,7 @@ export const routes = [
 				updatedAt: creationDate
 			})
 
-			return res.writeHead(201).end('task created')
+			return res.writeHead(201).end('Task created')
 		}
 	}
 ]
