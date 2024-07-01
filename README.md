@@ -51,6 +51,7 @@ Creates a new task with the given title and description
 ```sh
 curl -X POST http://localhost:3001/tasks -h "Content-Type: application/json" -d '{"title":"Task title", "description":"Task description"}'
 ```
+
 With 🥧 HTTPie
 ```sh
 http POST http://localhost:3001/tasks < httpie/create.json
@@ -72,6 +73,7 @@ Content-type: application/json
 
 "Title and description are obligatory"
 ```
+
 ##### List tasks
 Lists all tasks created, you may optionally pass a value to filter for specific tasks, based on their title or description
 ```sh
@@ -80,6 +82,7 @@ curl -X GET 'http://localhost:3001/tasks' -h "Content-Type: application/json"
 ```sh
 curl -X GET 'http://localhost:3001/tasks?search=title' -h "Content-Type: application/json"
 ```
+
 With 🥧 HTTPie
 ```sh
 http GET http://localhost:3001/tasks
@@ -112,6 +115,42 @@ Connection: keep-alive
 Content-type: application/json
 
 []
+```
+
+##### Update a task
+Updates the title and/or description of an existing task through its id, the updatedAt date is automatically updated
+```sh
+curl -X PUT http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 -h "Content-Type: application/json" -d '{"title":"New task title", "description":"New task description"}'
+```
+
+With 🥧 HTTPie
+```sh
+http PUT http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 < httpie/update.json
+```
+
+Responses
+```
+# When successfully updating a task
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# When not providing a valid request body
+
+HTTP/1.1 400 Bad Request
+Connection: keep-alive
+Content-type: application/json
+
+"Title or description obligatory"
+
+# When not finding the task by its id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
 ```
 
 #### <a id='en-structure' style='text-decoration: none; color: inherit;'>📂 Structure</a>
@@ -166,6 +205,7 @@ Cria uma nova tarefa com título e descrição informados
 ```sh
 curl -X POST http://localhost:3001/tasks -h "Content-Type: application/json" -d '{"title":"Título da tarefa", "description":"Descrição da tarefa"}'
 ```
+
 Com 🥧 HTTPie
 ```sh
 http POST http://localhost:3001/tasks < httpie/create.json
@@ -180,13 +220,14 @@ Content-type: application/json
 
 "Task created"
 
-# Esquecendo o título ou descrição no corpo da requisição
+# Ao esquecer o título ou descrição no corpo da requisição
 
 HTTP/1.1 400 Bad Request
 Content-type: application/json
 
 "Title and description are obligatory"
 ```
+
 ##### Listar tarefas
 Lista todas as tarefas criadas, opcionalmente você pode passar um valor para filtrar por tarefas específicas, baseado no título ou descrição delas
 ```sh
@@ -195,6 +236,7 @@ curl -X GET 'http://localhost:3001/tasks' -h "Content-Type: application/json"
 ```sh
 curl -X GET 'http://localhost:3001/tasks?search=título' -h "Content-Type: application/json"
 ```
+
 Com 🥧 HTTPie
 ```sh
 http GET http://localhost:3001/tasks
@@ -202,7 +244,8 @@ http GET http://localhost:3001/tasks
 ```sh
 http GET http://localhost:3001/tasks?search=título
 ```
-Responses
+
+Respostas
 ```
 # Tendo tarefas criadas
 HTTP/1.1 200 OK
@@ -213,9 +256,9 @@ Content-type: application/json
   {
    "completedAt": null,
    "createdAt": "2024-06-30T22:47:22.258Z",
-   "description": "task description",
+   "description": "Descrição da tarefa",
    "id": "88e75cc5-605f-49e9-a295-89a027136ab0",
-    "title": "task title",
+    "title": "Título da tarefa",
     "updatedAt": "2024-06-30T22:47:22.258Z"
   }
 ]
@@ -227,6 +270,42 @@ Connection: keep-alive
 Content-type: application/json
 
 []
+```
+
+##### Atualizar uma tarefa
+Atualiza o título e/ou descrição de uma tarefa já existente atráves do seu id, a data de última modificação é atualizada junta automaticamente
+```sh
+curl -X PUT http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 -h "Content-Type: application/json" -d '{"title":"Novo título da tarefa", "description":"Nova descrição da tarefa"}'
+```
+
+Com 🥧 HTTPie
+```sh
+http PUT http://localhost:3001/tasks/e13c1414-476f-4c7d-b8ca-44a4279bd538 < httpie/update.json
+```
+
+Respostas
+```
+# Ao atualizar a tarefa com sucesso
+
+HTTP/1.1 204 No Content
+Connection: keep-alive
+Content-type: application/json
+
+# Ao enviar um corpo de requisição inválido
+
+HTTP/1.1 400 Bad Request
+Connection: keep-alive
+Content-type: application/json
+
+"Title or description obligatory"
+
+# Ao não encontrar a tarefa pelo seu id
+
+HTTP/1.1 404 Not Found
+Connection: keep-alive
+Content-type: application/json
+
+"Task not found"
 ```
 
 #### <a id='pt-br-estrutura' style='text-decoration: none; color: inherit;'>📂 Estrutura</a>

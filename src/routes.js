@@ -42,5 +42,22 @@ export const routes = [
 
 			return res.writeHead(201).end('Task created')
 		}
+	},
+	{
+		method: 'PUT',
+		path: buildRoutePath('/tasks/:id'),
+		handler: (req, res) => {
+			const { id } = req.params
+
+			if (!req.body)
+				return res.writeHead(400).end('Title or description obligatory')
+
+			const task = database.update('tasks', id, req.body)
+
+			if (!task)
+				return res.writeHead(404).end('Task not found')
+
+			return res.writeHead(204).end()
+		}
 	}
 ]
