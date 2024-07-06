@@ -66,7 +66,7 @@ Content-type: application/json
 
 "Task created"
 
-# Missing either the title or description in the request body
+# When not providing a valid request body
 
 HTTP/1.1 400 Bad Request
 Content-type: application/json
@@ -278,6 +278,7 @@ Com 🥧 HTTPie
 ```sh
 http POST http://localhost:3001/tasks < httpie/create.json
 ```
+
 Respostas
 ```
 # Ao criar uma nova tarefa com sucesso
@@ -288,7 +289,7 @@ Content-type: application/json
 
 "Task created"
 
-# Ao esquecer o título ou descrição no corpo da requisição
+# Ao enviar um corpo de requisição inválido
 
 HTTP/1.1 400 Bad Request
 Content-type: application/json
