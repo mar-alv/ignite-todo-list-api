@@ -1,4 +1,4 @@
-<h1 align='center'> 🚧 Ignite ToDo List API in progress... 🚧 </h1>
+<h1 align='center'> Ignite ToDo List API </h1>
 
 <div align='center'>
 
