@@ -16,7 +16,7 @@
   - [📥 Instalar](#install)
   - [🚀 Rodar Localmente](#locally)
 - [⚡ Endpoints](#endpoints)
-- [📂 Estrutura](#pt-br-estrutura)
+- [📂 Estrutura](#structure)
 - [🧰 Tecnologias](#technologies)
 - [📸 Prints e 🎥 Gravações](#screenshots-prints)
 - [👤 Autor](#author)
@@ -224,7 +224,7 @@ Content-type: application/json
 "Route not found"
 ```
 
-### <a id='pt-br-estrutura' style='text-decoration: none; color: inherit;'>📂 Estrutura</a>
+### <a id='structure' style='text-decoration: none; color: inherit;'>📂 Estrutura</a>
 ```
 │ docs/
 │   └── ...
